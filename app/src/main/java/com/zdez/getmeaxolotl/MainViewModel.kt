@@ -15,10 +15,11 @@ class MainViewModel(application: Application) :AndroidViewModel(application) {
         get() = _response
 
     init {
+        _response.value = "Welcome"
         getData()
     }
 
-    private fun getData() {
+    fun getData() {
         Api.retrofitService.getData().enqueue(object: Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 _response.value = response.body()
