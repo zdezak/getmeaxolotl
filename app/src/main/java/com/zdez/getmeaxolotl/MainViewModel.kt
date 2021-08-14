@@ -1,14 +1,13 @@
 package com.zdez.getmeaxolotl
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel(application: Application) :AndroidViewModel(application) {
+class MainViewModel() : ViewModel() {
     private val _response = MutableLiveData<String>()
 
     val response: LiveData<String>
