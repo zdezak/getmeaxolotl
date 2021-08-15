@@ -1,5 +1,6 @@
 package com.zdez.getmeaxolotl
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,11 +8,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel() : ViewModel() {
+class MainViewModel : ViewModel() {
     private val _response = MutableLiveData<String>()
 
     val response: LiveData<String>
         get() = _response
+    var int = 0
 
     init {
         _response.value = "Welcome"
