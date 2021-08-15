@@ -9,25 +9,23 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-    private val _response = MutableLiveData<String>()
+    private val _response = MutableLiveData<Properties>()
 
-    val response: LiveData<String>
+    val response: LiveData<Properties>
         get() = _response
-    var int = 0
 
     init {
-        _response.value = "Welcome"
         getData()
     }
 
     fun getData() {
-        Api.retrofitService.getData().enqueue(object: Callback<String>{
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+        Api.retrofitService.getData().enqueue(object: Callback<Properties>{
+            override fun onResponse(call: Call<Properties>, response: Response<Properties>) {
                 _response.value = response.body()
             }
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                        _response.value = "Failure: ${t.message}"
+            override fun onFailure(call: Call<Properties>, t: Throwable) {
+                        _response.value?.facts = "Failure: ${t.message}"
             }
         })
 
